@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mabel Qiu — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #faf6f0;
+      --cream2: #f4ede3;
+      --pink: #d4899a;
+      --pink-light: #f2d0d8;
+      --green: #7aaa7a;
+      --green-light: #c8dcc8;
+      --blue: #8aafc4;
+      --blue-light: #cde0ea;
+      --text: #2c2420;
+      --text-muted: #8a7068;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── WATERCOLOR BACKGROUND ── */
+    .bg-blobs {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bg-blobs svg {
+      width: 100%; height: 100%;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: none;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 400;
+      transition: color 0.2s;
+      text-decoration: none;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+      padding: 0;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+  min-height: auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7rem 3rem 4rem;
+  /* padding: 5rem 3rem 4rem; */
+}
+
+    /* ── LANDING ── */
+    #landing {
+      align-items: center;
+      padding-top: 10rem;
+    }
+    .landing-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .greeting {
+      font-family: var(--serif);
+      font-size: clamp(3.9rem, 6vw, 5.8rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin-bottom: 1.8rem;
+    }
+    .greeting .line1 {
+      display: block;
+      animation: slideUp 0.9s cubic-bezier(.16,1,.3,1) both;
+    }
+    .greeting .line2 {
+      display: block;
+      font-style: italic;
+      color: var(--text-muted);
+      animation: slideUp 0.9s 0.15s cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(70px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .landing-bio {
+      font-size: 0.95rem;
+      line-height: 2;
+      color: var(--text-muted);
+      max-width: 420px;
+      animation: fadeUp 1s 0.45s both;
+    }
+    .landing-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.8rem;
+      animation: fadeUp 1s 0.65s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.85rem;
+      border-radius: 20px;
+      color: var(--text-muted);
+    }
+    .tag-pink  { border: 1px solid rgba(212,137,154,0.5); }
+    .tag-green { border: 1px solid rgba(122,170,122,0.5); }
+    .tag-blue  { border: 1px solid rgba(138,175,196,0.5); }
+
+    /* Photo column */
+    .photo-col {
+      animation: fadeUp 1s 0.3s both;
+    }
+    .photo-frame {
+      position: relative;
+      width: 100%;
+    }
+    .photo-blob {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 120px 120px 60px 60px;
+      background: linear-gradient(160deg, #f2d0d8 0%, #d8e8d8 55%, #cde0ea 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* ↓ Replace .photo-blob with an <img> if you have a photo */
+    .photo-initials {
+      font-family: var(--serif);
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(44,36,32,0.3);
+      letter-spacing: 0.1em;
+      z-index: 1;
+      user-select: none;
+    }
+    .photo-deco1 {
+      position: absolute;
+      bottom: -14px; right: -14px;
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: #f2d0d8;
+      border: 4px solid var(--cream);
+    }
+    .photo-deco2 {
+      position: absolute;
+      top: -10px; left: -10px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #c8dcc8;
+      border: 3px solid var(--cream);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { justify-content: flex-start; }
+
+    .section-header {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 3.5rem;
+    }
+    .section-header em {
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .timeline-wrap {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto 3.5rem;
+      position: relative;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent 0%, var(--pink) 20%, var(--green) 80%, transparent 100%);
+      transform: translateX(-50%);
+    }
+
+    .tl-row {
+      display: grid;
+      grid-template-columns: 1fr 24px 1fr;
+      gap: 0;
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+    .tl-left  { padding-right: 2rem; text-align: right; }
+    .tl-right { padding-left: 2rem; }
+    .tl-empty {}
+    .tl-center {
+      display: flex;
+      justify-content: center;
+      padding-top: 0.35rem;
+    }
+    .tl-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--pink);
+      flex-shrink: 0;
+    }
+    .tl-dot.green { border-color: var(--green); }
+    .tl-dot.blue  { border-color: var(--blue); }
+
+    .tl-date {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .tl-role {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.22rem;
+    }
+    .tl-company {
+      font-size: 0.8rem;
+      color: var(--pink);
+      margin-bottom: 0.55rem;
+      font-weight: 500;
+    }
+    .tl-company.green { color: var(--green); }
+    .tl-company.blue  { color: var(--blue); }
+    .tl-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* Skills */
+    .skills-wrap {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto 2.5rem;
+    }
+    .skills-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+    .skills-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.95rem;
+      border-radius: 20px;
+      transition: transform 0.18s;
+      cursor: default;
+    }
+    .pill:hover { transform: translateY(-2px); }
+    .pill-lang  { border: 1px solid rgba(212,137,154,0.6); color: #a0566a; background: rgba(212,137,154,0.1); }
+    .pill-frame { border: 1px solid rgba(122,170,122,0.6); color: #3d7a3d; background: rgba(122,170,122,0.1); }
+
+    /* Education card */
+    .edu-card {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(212,137,154,0.25);
+      border-radius: 14px;
+      padding: 1.4rem 1.8rem;
+    }
+    .edu-school {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+    .edu-degree {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .edu-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.9rem;
+    }
+    .edu-badge {
+      font-size: 0.7rem;
+      padding: 0.28rem 0.75rem;
+      border-radius: 20px;
+      background: rgba(205,224,234,0.45);
+      color: #5a7f95;
+      border: 1px solid rgba(138,175,196,0.4);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { justify-content: flex-start; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.6rem;
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(200,220,200,0.45);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(122,170,122,0.18);
+    }
+    .project-thumb {
+      height: 148px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .thumb-pink  { background: linear-gradient(135deg, #f2d0d8 0%, #e8bcc8 100%); }
+    .thumb-green { background: linear-gradient(135deg, #c8dcc8 0%, #b4ccb4 100%); }
+    .thumb-blue  { background: linear-gradient(135deg, #cde0ea 0%, #b8d0e0 100%); }
+    .thumb-cream { background: linear-gradient(135deg, #f4ede3 0%, #ead8c8 100%); }
+
+    .project-info { padding: 1.1rem 1.3rem 1.4rem; }
+    .project-name {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .project-tech {
+      font-size: 0.69rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.55rem;
+    }
+    .project-desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .project-link-btn {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.73rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .project-link-btn:hover { color: var(--text); }
+
+    /* ── CONNECT ── */
+    #connect {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .connect-inner { max-width: 480px; }
+
+    .connect-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 300;
+      line-height: 1.12;
+      margin-bottom: 1.5rem;
+    }
+    .connect-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 3rem;
+    }
+    .connect-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      align-items: center;
+    }
+    .connect-btn {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 1rem 1.8rem;
+      border-radius: 50px;
+      width: 300px;
+      text-decoration: none;
+      transition: all 0.22s;
+      font-size: 0.86rem;
+      letter-spacing: 0.06em;
+      border: 1px solid;
+      font-family: var(--sans);
+      background: transparent;
+    }
+    .connect-btn:hover { transform: translateX(7px); }
+    .cb-email    { border-color: rgba(212,137,154,0.55); color: #a0566a; }
+    .cb-email:hover { background: rgba(212,137,154,0.07); }
+    .cb-linkedin { border-color: rgba(138,175,196,0.55); color: #4a7090; }
+    .cb-linkedin:hover { background: rgba(138,175,196,0.07); }
+    .cb-github   { border-color: rgba(122,170,122,0.55); color: #3d7a3d; }
+    .cb-github:hover { background: rgba(122,170,122,0.07); }
+    .cb-spotify  { border-color: rgba(160,210,120,0.55); color: #508040; }
+    .cb-spotify:hover { background: rgba(160,210,120,0.07); }
+
+    .cb-icon  { font-size: 1.1rem; flex-shrink: 0; }
+    .cb-label { font-weight: 500; }
+    .cb-meta  { margin-left: auto; font-size: 0.74rem; opacity: 0.55; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.4rem; }
+      section { padding: 6rem 1.5rem 3rem; }
+
+      .landing-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+      }
+      .landing-bio { max-width: 100%; }
+      .landing-tags { justify-content: center; }
+      .photo-col { order: -1; max-width: 260px; margin: 0 auto; }
+
+      .timeline-line { display: none; }
+      .tl-row {
+        grid-template-columns: 1fr;
+        margin-bottom: 2rem;
+      }
+      .tl-left, .tl-right {
+        padding: 0;
+        text-align: left;
+      }
+      .tl-center { display: none; }
+      .tl-left.tl-empty, .tl-right.tl-empty { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Watercolor blobs -->
+<div class="bg-blobs">
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="70" result="blur"/>
+      </filter>
+    </defs>
+    <g filter="url(#goo)">
+      <ellipse cx="8%"  cy="18%" rx="220" ry="200" fill="#f2d0d8" opacity="0.28"/>
+      <ellipse cx="88%" cy="12%" rx="200" ry="180" fill="#c8dcc8" opacity="0.24"/>
+      <ellipse cx="75%" cy="72%" rx="240" ry="210" fill="#cde0ea" opacity="0.22"/>
+      <ellipse cx="18%" cy="82%" rx="180" ry="160" fill="#f2d0d8" opacity="0.18"/>
+      <ellipse cx="50%" cy="45%" rx="160" ry="130" fill="#f4ede3" opacity="0.12"/>
+    </g>
+  </svg>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <a class="nav-logo" href="#landing">mabel qiu</a>
+  <ul class="nav-links">
+    <li><a class="nav-link" href="#landing">home</a></li>
+    <li><a class="nav-link" href="#experience">experience</a></li>
+    <li><a class="nav-link" href="#projects">projects</a></li>
+    <li><a class="nav-link" href="#connect">connect</a></li>
+  </ul>
+</nav>
+
+<!-- ── LANDING ── -->
+<section id="landing" class="active">
+  <div class="landing-inner">
+    <div class="landing-text">
+      <div class="greeting">
+        <span class="line1">Hi, I'm Mabel!</span>
+      </div>
+      <p class="landing-bio">
+        I’m a computer science student at Cornell who enjoys building things that people actually use. I’m currently an Android developer with Cornell AppDev and will be joining M&T Bank as an intern this summer. I like working on products that people use in their daily lives, especially ones that feel tangible!
+        Outside of coding, I’m usually trying new coffee shops and restaurants, going on runs or hikes, or putting together fun outfits. I also really enjoy meeting new people, so feel free to reach out!
+      </p>
+    </div>
+    <div class="photo-col">
+      <div class="photo-frame">
+        <!--
+          TO ADD YOUR PHOTO: Replace the .photo-blob div below with:
+          <img src="your-photo.jpg" alt="Mabel Qiu"
+               style="width:100%; aspect-ratio:3/4; object-fit:cover;
+                      border-radius:120px 120px 60px 60px;" />
+        -->
+        <img src="your-photo.png" alt="Mabel Qiu"
+     style="width:100%; aspect-ratio:3/3; object-fit:cover;
+            border-radius:0;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="section-header" style="max-width:820px;width:100%;margin:0 auto 3rem;">
+    where I've <em>been</em>
+  </div>
+
+  <div class="timeline-wrap">
+    <div class="timeline-line"></div>
+
+     <!-- M&T (left) -->
+     <div class="tl-row">
+      <div class="tl-left">
+        <div class="tl-date">Jun 2026</div>
+        <div class="tl-role">Software Engineering Intern</div>
+        <div class="tl-company blue">M&amp;T Bank &mdash; Buffalo, NY</div>
+        <div class="tl-desc">
+          Coming soon. 
+        </div>
+      </div>
+      <div class="tl-center"><div class="tl-dot blue"></div></div>
+      <div class="tl-right tl-empty"></div>
+    </div>
+
+    <!-- AppDev (right) -->
+    <div class="tl-row">
+      <div class="tl-left tl-empty"></div>
+      <div class="tl-center"><div class="tl-dot green"></div></div>
+      <div class="tl-right">
+        <div class="tl-date">Feb 2026</div>
+        <div class="tl-role">Android Developer</div>
+        <div class="tl-company green">Cornell AppDev &mdash; Ithaca, NY</div>
+        <div class="tl-desc">
+          Built and shipped features for Score, an open-source Android app by Cornell AppDev, using Kotlin and Jetpack Compose to create responsive, reusable UI components. Developed networking layers to retrieve and display live game data, handling asynchronous requests, error states, and dynamic UI updates. 
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Siemens (left) -->
+    <div class="tl-row">
+      <div class="tl-left">
+        <div class="tl-date">Jun 2025 – Aug 2025</div>
+        <div class="tl-role">IT Project Management Intern</div>
+        <div class="tl-company">Siemens Healthineers &mdash; Malvern, PA</div>
+        <div class="tl-desc">
+          Led end-to-end migration of 50+ Smartsheets to Monday.com across 6 IT teams. Onboarded 30+ users with structured access controls to improve automation, collaboration, and cost efficiency.
+        </div>
+      </div>
+      <div class="tl-center"><div class="tl-dot"></div></div>
+      <div class="tl-right tl-empty"></div>
+    </div>
+
+    <!-- Tyger Fit (right) -->
+    <div class="tl-row">
+      <div class="tl-left tl-empty"></div>
+      <div class="tl-center"><div class="tl-dot green"></div></div>
+      <div class="tl-right">
+        <div class="tl-date">Mar 2025 – Aug 2025</div>
+        <div class="tl-role">Full Stack Intern</div>
+        <div class="tl-company green">Tyger Fit Lab &mdash; Remote</div>
+        <div class="tl-desc">
+          Developed frontend with React Native, Expo, and TypeScript — dynamic social feed, customizable profile pages, and real-time social interactions. Collaborated with a cross-functional team to ship a production Android app.
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+
+  <!-- Skills -->
+  <div class="skills-wrap">
+    <div class="skills-label">languages</div>
+    <div class="skills-cloud">
+      <span class="pill pill-lang">Java</span>
+      <span class="pill pill-lang">Python</span>
+      <span class="pill pill-lang">OCaml</span>
+      <span class="pill pill-lang">JavaScript</span>
+      <span class="pill pill-lang">TypeScript</span>
+      <span class="pill pill-lang">Kotlin</span>
+      <span class="pill pill-lang">LaTeX</span>
+    </div>
+    <div class="skills-label">frameworks &amp; tools</div>
+    <div class="skills-cloud">
+      <span class="pill pill-frame">React</span>
+      <span class="pill pill-frame">React Native</span>
+      <span class="pill pill-frame">Expo</span>
+      <span class="pill pill-frame">Node.js</span>
+      <span class="pill pill-frame">Express</span>
+      <span class="pill pill-frame">PyTorch</span>
+      <span class="pill pill-frame">Jetpack Compose</span>
+      <span class="pill pill-frame">SQLite</span>
+      <span class="pill pill-frame">Git</span>
+      <span class="pill pill-frame">Android Studio</span>
+      <span class="pill pill-frame">NumPy</span>
+      <span class="pill pill-frame">Pandas</span>
+      <span class="pill pill-frame">Figma</span>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="edu-card">
+    <div class="edu-school">Cornell University, College of Engineering</div>
+    <div class="edu-degree">
+      B.S. Computer Science &middot; Aug 2024 – Jun 2028<br/>
+      Minors: AI, Operations Research in Engineering <br/>
+      Coursework: OOP &amp; Data Structures, Analysis of Algorithms, Discrete Math, Linear Algebra, Functional Programming <br/>
+      Programs: Susqehanna Discovery Day, Coding it Forward Discovery Program
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="section-header" style="max-width:960px;width:100%;margin:0 auto 3rem;">
+    things I've <em>made</em>
+  </div>
+  <div class="projects-grid">
+
+    <a class="project-card" href="https://github.com/cuappdev/score-android" target="_blank" rel="noopener">
+      <div class="project-thumb thumb-green">🏆</div>
+      <div class="project-info">
+        <div class="project-name">Score</div>
+        <div class="project-tech">Kotlin · Jetpack Compose · Android</div>
+        <div class="project-desc">
+          Open-source Cornell AppDev Android app centralising discovery and tracking of athletic events. Built responsive UI screens and networking layers for live game data.
+        </div>
+        <span class="project-link-btn">view on github →</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/laurenp-2/quickfi-credit-analysis" target="_blank" rel="noopener">
+      <div class="project-thumb thumb-pink">🤖</div>
+      <div class="project-info">
+        <div class="project-name">Credit Analysis Agent</div>
+        <div class="project-tech">Python · PyTorch · LLM APIs</div>
+        <div class="project-desc">
+          AI-powered system validating loan applications against credit records. Modular risk evaluation pipeline generating structured Risk Analysis, Credit Profile, and Recommendation outputs.
+        </div>
+        <span class="project-link-btn">view on github →</span>
+      </div>
+    </a>
+
+
+    <a class="project-card" href="https://github.com/rinahz/CamlType" target="_blank" rel="noopener">
+      <div class="project-thumb thumb-blue">⌨️</div>
+      <div class="project-info">
+        <div class="project-name">CamlType</div>
+        <div class="project-tech">OCaml · GTK</div>
+        <div class="project-desc">
+          Led a team of 4 to build a typing practice app with multiple modes, real-time input handling, color-coded feedback, and live performance metrics.
+        </div>
+        <span class="project-link-btn">view on github →</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="https://github.com/mabel-qiu" target="_blank" rel="noopener">
+      <div class="project-thumb thumb-cream">💪</div>
+      <div class="project-info">
+        <div class="project-name">Tyger Fit App</div>
+        <div class="project-tech">React Native · TypeScript · Expo</div>
+        <div class="project-desc">
+          Full-stack fitness social app with dynamic feed, customisable profiles, and real-time interactions. Designed in Figma and shipped to production Android.
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── CONNECT ── -->
+<section id="connect">
+  <div class="connect-inner">
+    <div class="connect-heading">let's <em style="color:var(--text-muted)">connect</em></div>
+    <p class="connect-sub">
+      Always happy to chat! 
+    </p>
+    <div class="connect-links">
+      <a class="connect-btn cb-email" href="mailto:mq86@cornell.edu">
+        <span class="cb-icon">✉</span>
+        <span class="cb-label">email</span>
+        <span class="cb-meta">mq86@cornell.edu</span>
+      </a>
+      <a class="connect-btn cb-linkedin" href="https://www.linkedin.com/in/mabel-qiu-b14268212/?skipRedirect=true" target="_blank" rel="noopener">
+        <span class="cb-icon">in</span>
+        <span class="cb-label">linkedin</span>
+        <span class="cb-meta">/in/mabel-qiu</span>
+      </a>
+      <a class="connect-btn cb-github" href="https://github.com/mqiu90" target="_blank" rel="noopener">
+        <span class="cb-icon">&#9670;</span>
+        <span class="cb-label">github</span>
+        <span class="cb-meta">mabel-qiu</span>
+      </a>
+      <a class="connect-btn cb-spotify" href="https://open.spotify.com/user/4smxh39kpekgz5owdx300726s?si=49bacce3497c4751" target="_blank" rel="noopener">
+        <span class="cb-icon">&#9834;</span>
+        <span class="cb-label">spotify</span>
+        <span class="cb-meta">what I'm listening to</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
