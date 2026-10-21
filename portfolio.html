@@ -393,6 +393,8 @@
     .thumb-green { background: linear-gradient(135deg, #c8dcc8 0%, #b4ccb4 100%); }
     .thumb-blue  { background: linear-gradient(135deg, #cde0ea 0%, #b8d0e0 100%); }
     .thumb-cream { background: linear-gradient(135deg, #f4ede3 0%, #ead8c8 100%); }
+    .thumb-lavender { background: linear-gradient(135deg, #e2d8f0 0%, #d0c2e6 100%); }
+    .thumb-peach    { background: linear-gradient(135deg, #f8dcc6 0%, #f0c4a6 100%); }
 
     .project-info { padding: 1.1rem 1.3rem 1.4rem; }
     .project-name {
@@ -578,33 +580,61 @@
   <div class="timeline-wrap">
     <div class="timeline-line"></div>
 
-     <!-- M&T (left) -->
-     <div class="tl-row">
-      <div class="tl-left">
-        <div class="tl-date">Jun 2026</div>
-        <div class="tl-role">Software Engineering Intern</div>
-        <div class="tl-company blue">M&amp;T Bank &mdash; Buffalo, NY</div>
-        <div class="tl-desc">
-          Coming soon. 
-        </div>
-      </div>
-      <div class="tl-center"><div class="tl-dot blue"></div></div>
-      <div class="tl-right tl-empty"></div>
+<!-- GenAI Fellow (left) -->
+<div class="tl-row">
+  <div class="tl-left">
+    <div class="tl-date">Fall 2026 – Present</div>
+    <div class="tl-role">GenAI Fellow</div>
+    <div class="tl-company">Center for Teaching Innovation &mdash; Cornell University</div>
+    <div class="tl-desc">
+      Collecting survey responses and interviews about students' opinions on AI, then analyzing the data with Python and R.
     </div>
+  </div>
+  <div class="tl-center"><div class="tl-dot"></div></div>
+  <div class="tl-right tl-empty"></div>
+</div>
 
-    <!-- AppDev (right) -->
-    <div class="tl-row">
-      <div class="tl-left tl-empty"></div>
-      <div class="tl-center"><div class="tl-dot green"></div></div>
-      <div class="tl-right">
-        <div class="tl-date">Feb 2026</div>
-        <div class="tl-role">Android Developer</div>
-        <div class="tl-company green">Cornell AppDev &mdash; Ithaca, NY</div>
-        <div class="tl-desc">
-          Built and shipped features for Score, an open-source Android app by Cornell AppDev, using Kotlin and Jetpack Compose to create responsive, reusable UI components. Developed networking layers to retrieve and display live game data, handling asynchronous requests, error states, and dynamic UI updates. 
-        </div>
-      </div>
+<!-- Android Instructor (right) -->
+<div class="tl-row">
+  <div class="tl-left tl-empty"></div>
+  <div class="tl-center"><div class="tl-dot green"></div></div>
+  <div class="tl-right">
+    <div class="tl-date">Fall 2026 – Present</div>
+    <div class="tl-role">Android Course Instructor</div>
+    <div class="tl-company green">Cornell AppDev &mdash; Ithaca, NY</div>
+    <div class="tl-desc">
+      Teaching Cornell AppDev's 7-week Intro to Android Development course, guiding students from Kotlin basics to networking and apps ready for the Google Play Store.
     </div>
+  </div>
+</div>
+
+<!-- M&T (left) -->
+<div class="tl-row">
+  <div class="tl-left">
+    <div class="tl-date">Jun 2026 – Aug 2026</div>
+    <div class="tl-role">Software Engineering Intern</div>
+    <div class="tl-company blue">M&amp;T Bank &mdash; Buffalo, NY</div>
+    <div class="tl-desc">
+      Built and shipped features for a full-stack internal communication platform serving 6 IT teams and 91 developers, using ServiceNow, JavaScript, HTML, and CSS with an MVVM architecture. Implemented backend insert, delete, and synchronization operations across 5 related tables, cutting data sync errors by 50%.
+    </div>
+  </div>
+  <div class="tl-center"><div class="tl-dot blue"></div></div>
+  <div class="tl-right tl-empty"></div>
+</div>
+
+<!-- AppDev (right) -->
+<div class="tl-row">
+  <div class="tl-left tl-empty"></div>
+  <div class="tl-center"><div class="tl-dot green"></div></div>
+  <div class="tl-right">
+    <div class="tl-date">Feb 2026 – Present</div>
+    <div class="tl-role">Android Developer</div>
+    <div class="tl-company green">Cornell AppDev &mdash; Ithaca, NY</div>
+    <div class="tl-desc">
+      Building features across three open-source Cornell AppDev apps in Kotlin and Jetpack Compose. On Eatery (11k monthly users), built push notifications with Firebase, a notification hub, and backend-synced settings. On CourseGrab, integrated Amazon SES into the Flask backend for course-opening alerts and refreshed the Android UI. On Score, built UI screens and networking layers for live game data.
+    </div>
+  </div>
+</div>
 
 
     <!-- Siemens (left) -->
@@ -642,16 +672,17 @@
   <div class="skills-wrap">
     <div class="skills-label">languages</div>
     <div class="skills-cloud">
-      <span class="pill pill-lang">Java</span>
       <span class="pill pill-lang">Python</span>
+      <span class="pill pill-lang">Kotlin</span>
+      <span class="pill pill-lang">Java</span>
       <span class="pill pill-lang">OCaml</span>
       <span class="pill pill-lang">JavaScript</span>
       <span class="pill pill-lang">TypeScript</span>
-      <span class="pill pill-lang">Kotlin</span>
-      <span class="pill pill-lang">LaTeX</span>
+      <span class="pill pill-lang">C</span>
     </div>
     <div class="skills-label">frameworks &amp; tools</div>
     <div class="skills-cloud">
+      <span class="pill pill-frame">Android Studio</span>
       <span class="pill pill-frame">React</span>
       <span class="pill pill-frame">React Native</span>
       <span class="pill pill-frame">Expo</span>
@@ -664,7 +695,7 @@
       <span class="pill pill-frame">Android Studio</span>
       <span class="pill pill-frame">NumPy</span>
       <span class="pill pill-frame">Pandas</span>
-      <span class="pill pill-frame">Figma</span>
+      <span class="pill pill-frame">ServiceNow</span>
     </div>
   </div>
 
@@ -673,8 +704,7 @@
     <div class="edu-school">Cornell University, College of Engineering</div>
     <div class="edu-degree">
       B.S. Computer Science &middot; Aug 2024 – Jun 2028<br/>
-      Minors: AI, Operations Research in Engineering <br/>
-      Coursework: OOP &amp; Data Structures, Analysis of Algorithms, Discrete Math, Linear Algebra, Functional Programming <br/>
+      Coursework: Machine Learning, Computer Systems, Databases <br/>
       Programs: Susqehanna Discovery Day, Coding it Forward Discovery Program
     </div>
   </div>
@@ -686,6 +716,30 @@
     things I've <em>made</em>
   </div>
   <div class="projects-grid">
+
+    <a class="project-card" href="https://github.com/cuappdev/eatery-blue-android" target="_blank" rel="noopener">
+      <div class="project-thumb thumb-lavender">🍽️</div>
+      <div class="project-info">
+        <div class="project-name">Eatery</div>
+        <div class="project-tech">Kotlin · Jetpack Compose · Firebase</div>
+        <div class="project-desc">
+          Open-source Cornell AppDev Android app for live dining hall menus and hours, used by 11,000 monthly students. Built push notifications with a notification hub and settings synced with the backend.
+        </div>
+        <span class="project-link-btn">view on github →</span>
+      </div>
+    </a>
+    
+    <a class="project-card" href="https://github.com/cuappdev/coursegrab-backend" target="_blank" rel="noopener">
+      <div class="project-thumb thumb-peach">🎓</div>
+      <div class="project-info">
+        <div class="project-name">CourseGrab</div>
+        <div class="project-tech">Python · Flask · Amazon SES · Kotlin</div>
+        <div class="project-desc">
+          Cornell AppDev app that alerts students when course sections open, used by 2.9K students each semester. Integrated Amazon SES into the Flask backend and refreshed the Android home and search screens. Now documenting the API and scoping changes for a friends feature.
+        </div>
+        <span class="project-link-btn">view on github →</span>
+      </div>
+    </a>
 
     <a class="project-card" href="https://github.com/cuappdev/score-android" target="_blank" rel="noopener">
       <div class="project-thumb thumb-green">🏆</div>
